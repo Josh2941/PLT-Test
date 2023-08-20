@@ -21,21 +21,21 @@ export const ListItem = (props: ItemProps) => {
         <View style={styles.container} key={id}>
             <Image style={styles.image} source={{ uri: img }} /> 
             <View style={{ flex: 1 }}>
-                <Text style={styles.name}>{name}</Text>
+                <Text testID='listItemName' style={styles.name}>{name}</Text>
                 <View style={styles.bottomRow}>
                     <View>
-                        <Text style={{ marginBottom: 10 }}>{colour}</Text>
-                        <Text style={{ marginBottom: 10 }}>{price}</Text>
+                        <Text testID='listItemColor' style={{ marginBottom: 10 }}>{colour}</Text>
+                        <Text testID='listItemPrice' style={{ marginBottom: 10 }}>{price}</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         {selectedCount && selectedCount > 0 ?
                         <>
-                            <Button title="-" onPress={() => onPressDecrement?.(props as ListItemProps)}/>
-                            <Text>{selectedCount}</Text>
-                            <Button title="+" onPress={() => onPressIncrement?.(props as ListItemProps)}/>
+                            <Button testID='listItemDecermentButton' title="-" onPress={() => onPressDecrement?.(props as ListItemProps)}/>
+                            <Text testID='listItemCount'>{selectedCount}</Text>
+                            <Button testID='listItemIncermentButton' title="+" onPress={() => onPressIncrement?.(props as ListItemProps)}/>
                         </>
                         : 
-                        <Button title="Add To Cart" onPress={() => onPressIncrement?.(props as ListItemProps)}/>}
+                        <Button testID='listItemAddToCartButton' title="Add To Cart" onPress={() => onPressIncrement?.(props as ListItemProps)}/>}
                     </View>
                 </View>
             </View>

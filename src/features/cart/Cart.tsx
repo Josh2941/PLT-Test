@@ -12,7 +12,7 @@ type ListProps = {
     }
 }
 
-const Cart = ({ actions: { increment, decrement }, selectedList }: ListProps) => {
+export const Cart = ({ actions: { increment, decrement }, selectedList }: ListProps) => {
 
     const [ cartList, setCartList ] = useState<ListItemProps[]>(selectedList);
 
@@ -24,11 +24,12 @@ const Cart = ({ actions: { increment, decrement }, selectedList }: ListProps) =>
     return (
         <View style={{ flex: 1 }}>
             <FlatList
+                testID="cartList"
                 style={{ flex: 1 }}
                 data={cartList}
                 extraData={cartList}
                 renderItem={({ item }) => <ListItem {...item} onPressIncrement={increment} onPressDecrement={decrement} />}/>
-            <Text>Total: {selectedList.reduce((acc, {price, selectedCount}) => acc + (price * selectedCount!), 0)}</Text>
+            <Text>Total: <Text testID="total">{selectedList.reduce((acc, {price, selectedCount}) => acc + (price * selectedCount!), 0)}</Text></Text>
         </View>
     )
 }
